@@ -4,11 +4,19 @@
     <meta charset="UFT-8"/>
     <title>Tudo sobre google glass</title>
     <link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
-
-</head>
-<script language="JavaScript" src="_javascript/funcoes.js"> </script>
+    <link rel="stylesheet" href="_css/form.css"/>
+    <script language="JavaScript" src="_javascript/funcoes.js"> </script>
 <!-- usar <wbr/> para quebra de palavras sem hifen -->
 <!-- usar &shy; (significa = soft hyphen) para quebra e faz separação de silabas com hifen -->
+    <script>
+        function calc_total(){
+            var qtd = parseInt(document.getElementById('cQtd').value);
+            tot = qtd*1500;
+            document.getElementById('cTot').value = tot;
+        }
+    </script>
+</head>
+
 <body>
 <div id="interface">
 
@@ -26,51 +34,103 @@
 
 
             <ul type="disc">
-                <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/especificacoes.png')"><a href="index.html">Home</a></li>
-                <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/especificacoes.png')"><a href="specs.html">Especificações</a></li>
-                <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/fotos.png')"><a href="fotos.html">Fotos</a></li>
-                <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/multimidia.png')"><a href="multimidia.html">Multimídia</a></li>
-                <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/fale-conosco.png')"><a href="fale-conosco">Fale conosco</a></li>
+                <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="index.html">Home</a></li>
+                <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="specs.html">Especificações</a></li>
+                <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="fotos.html">Fotos</a></li>
+                <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="multimidia.html">Multimídia</a></li>
+                <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="fale-conosco.html">Fale conosco</a></li>
             </ul>
         </nav>
     </header>
+    
+    <section id="corpo-full">
+        <article id="noticia-principal">
+            <header id="cabecalho-artigo">
+        <hgroup>
+            <h3>Fale conosco > Contato</h3>
+            <h1>Formulario de contato</h1>
+            <h2>por Sandro F Brito</h2>
+            <h3 class="direita">Atualizado em 05/Fevereiro/2021</h3>
+        </hgroup>
+    </header>
 
-Fale Conosco > Contato
-Formulário de Contato
-por Gustavo Guanabara
-Atualizado em 01/Maio/2013
+<form method="POST" id="fContato" action="mailto:san_juq@hotmail.com" oninput="calc_total();">
+    <fieldset id="usuario">
+<legend> Identificação do Usuário </legend>
+    <p><label for="cNome">Nome:</label><input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome Completo"/> </p>
+    <p><label for="cSenha">Senha:</label> <input type="password" name="tSenha" id="cSenha" size="8" maxlength="8" placeholder="8 digito"/> </p>
+    <p><label for="cMail">E-mail:</label> <input type="email" name="tMail" id="cMail" size="20" maxlength="40" /> </p>
+    <fieldset id="sexo">
+        <legend>Sexo:</legend>
+        <input type="radio" name="tSexo" id="cMasc" checked/> <label for="cMasc"> Masculino </label></br>
+        <input type="radio" name="tSexo" id="cFem"/> <label for="cFem"> Feminino </label>
+    </fieldset>
 
-Identificação do Usuário
-    Nome:
-    Senha:
-    E-mail:
-    Sexo:
-        - Masculino
-        - Feminino
-    Data de Nascimento:
+    <p><label for="cNasc">Data de Nascimento:</label><input type="date" name="tNasc" id="cNasc" /></p>
+    </fieldset>
 
-Endereço do Usuário
-    Logradouro:
-    Número:
-    Estado:
-    Cidade:
+    <fieldset id="endereco">
+<legend> Endereço do Usuário </legend>
+   <p><label for="cRua">Logradouro:</label><input type="text" name="tRua" id="cRua" size="13" maxlength="80" placeholder="Rua,Av,Trav..." /> </p>
+    <p><label for="cNum">Número:</label><input type="number" name="tNum" id="cNum" min="0" max="99999" /> </p>
+    <p><label for="cEst">Estado:</label> <select name="tEst" id="cEst">
+        
+       
+        <optgroup label="Região Nordeste">
+            <option value="PI">Piaui</option>
+            <option value="BA">Bahia</option>
+        </opgroup>
 
-Mensagem do Usuário
-    Grau de Urgência:
-    Mensagem:
+        <optgroup label="Região Suldeste">
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="SP" selected>São Paulo</option>
+        </optgroup>
 
-Quero um Google Glass
-    Gostaria de adquirir um Google Glass quando disponível
-    Cor:
-    Quantidade:
-    Preço Total: R$
+        <optgroup label="Região Sul">
+            <option value="PR">Paraná</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="RS">Rio grande do Sul</option>
+        </optgroup>
+       
+    </select> </p>
+    <p><label for="cCid">Cidade:</label> <input type="text" name="tCid" id="cCid" placeholder="Digite sua cidade" maxlength="40" size="20" list="cidades"/> </p>
+    <datalist id="cidades">
+        <option value="São Paulo"></option>
+        <option value="Juquitiba"></option>
+        <option value="São Lourenço"></option>
+        <option value="Itapecerica da Serra"></option>
+        <option value="Taboão da Serra"></option>
+        <option value="Embu das Artes"></option>
+    </datalist>
+    </fieldset>
 
+    <fieldset id="mensagem">
+<legend> Mensagem do Usuário </legend>
+   <p><label for="cUrg">Grau de Urgência:</label>
 
-[BOTÃO ENVIAR]
+    Min<input type="range" name="tUrg" id="cUrg" min="0" max="10" step="2"/>MAX</p>
+    <p><label for="cMsg">Mensagem:</label>
+    <textarea name="tMsg" id="cMsg" cols="35" rows="5" placeholder="Deixe aqui sua mensagem"></textarea></p>
+    </fieldset>
+
+    <fieldset id="pedido">
+<legend>Quero um Google Glass </legend>
+    <p><input type="checkbox" name="tPed" id="cPed" checked/>
+        <Label for="cPed">Gostaria de adquirir um Google Glass quando disponível</Label></p>
+    <p><Label for="cCor">Cor:</Label><input type="color" name="tCor" id="cCor" value="#0000FF"/></p>
+    <p><Label for="cQtd">Quantidade:</Label><input type="number" name="tQtd" id="cQtd" min="0" max="5" value="0"/></p>
+    <p><Label for="cTot">Preço Total: R$</Label><input type="text" name="tTot" id="cTot" placeholder="Total a pagar" readonly/></p>
+    </fieldset>
+
+<input type="image" src="_imagens/botao-enviar.png"/>
+    </form>
+        </article>
+    </section>
 
     <footer id="rodape">
-        <p>Copyright 2020 - by Sandro F Brito<br/>
-            <a href="http://facebook.com/Desativations" target="_blank">Facebook</a> | <a href="http://twitter.com" target="_blank">Twitter</a></p>
+        <p>Copyright 2021 - by Sandro F Brito<br/>
+            <a href="https://github.com/San4si" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/dev-san/" target="_blank">Linkedin</a></p>
     </footer>
 </div>
 </body>
